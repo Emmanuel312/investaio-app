@@ -6,7 +6,7 @@ export const Container = styled.View`
   height: 150px;
   width: 150px;
   margin-right: 10px;
-  border-radius: 30px;
+  border-radius: 25px;
   justify-content: space-between;
 `;
 
@@ -29,7 +29,7 @@ export const BrandingTitle = styled.Text`
   font-size: 16px;
 `;
 
-export const AssetsName = styled.Text`
+export const AssetName = styled.Text`
   color: #454545;
 `;
 

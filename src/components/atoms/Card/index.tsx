@@ -1,35 +1,41 @@
 import React from "react";
-import { Image } from "react-native";
+import { Asset } from "../../../interfaces/Assets";
 import {
   Container,
   Branding,
   Bottom,
   BottomLeft,
   BrandingTitle,
-  AssetsName,
+  AssetName,
   BottomRight,
   Value,
   Status,
 } from "./styles";
 
-const Card = () => {
+const Card = ({
+  brandingPhotoUrl,
+  brandingTitle,
+  assetName,
+  value,
+  status,
+}: Asset) => {
   return (
     <Container>
       <Branding
         source={{
-          uri: "http://whatsrel.com.br/wp-content/uploads/2019/06/inter.png",
+          uri: brandingPhotoUrl,
         }}
       />
 
       <Bottom>
         <BottomLeft>
-          <BrandingTitle>Inter</BrandingTitle>
-          <AssetsName>BIDI11</AssetsName>
+          <BrandingTitle>{brandingTitle}</BrandingTitle>
+          <AssetName>{assetName}</AssetName>
         </BottomLeft>
 
         <BottomRight>
-          <Value>R$ 77,87</Value>
-          <Status>2,42</Status>
+          <Value>{`R$ ${value}`}</Value>
+          <Status>{status}</Status>
         </BottomRight>
       </Bottom>
     </Container>

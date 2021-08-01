@@ -1,14 +1,23 @@
 import React from "react";
 import { FlatList } from "react-native";
+import { Asset } from "../../../interfaces/Assets";
 import Card from "../../atoms/Card";
 import { Container } from "./styles";
 
-const data = [{ ok: 1 }, { ok: 2 }];
+interface IProps {
+  assetsList: Asset[];
+}
 
-const CardList = () => {
+const CardList = ({ assetsList }: IProps) => {
   return (
     <Container>
-      <FlatList data={data} horizontal renderItem={({ item }) => <Card />} />
+      <FlatList
+        data={assetsList}
+        renderItem={({ item }) => <Card {...item} />}
+        horizontal
+        keyExtractor={(item, index) => String(index)}
+        showsHorizontalScrollIndicator={false}
+      />
     </Container>
   );
 };
