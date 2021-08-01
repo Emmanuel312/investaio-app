@@ -1,3 +1,3 @@
-import { Application } from './src';
+import { Application } from "./src";
 
-export default Application
+export default Application;

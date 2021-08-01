@@ -1,34 +1,46 @@
 import React from "react";
 import Banner from "../../components/organisms/Banner";
-import { Asset } from "../../interfaces/Assets";
+import Header from "../../components/organisms/Header";
+import { Asset } from "../../interfaces";
 
-import { Container, Header, Content, Separator } from "./styles";
+import { Container, Content, Separator } from "./styles";
 
-const asset: Asset = {
-  brandingPhotoUrl:
-    "http://whatsrel.com.br/wp-content/uploads/2019/06/inter.png",
-  brandingTitle: "Inter",
-  assetName: "BIDI11",
-  value: "77.87",
-  status: "2.42",
-};
+const assets: Asset[] = [
+  {
+    brandingPhotoUrl: "https://logospng.org/wp-content/uploads/banco-inter.png",
+    brandingTitle: "INTER",
+    assetName: "BIDI11",
+    value: "115.10",
+    status: "1.26",
+    isPositivelyVaried: true,
+  },
+  {
+    brandingPhotoUrl:
+      "https://logospng.org/download/vale/logo-vale-escudo-1536.png",
+    brandingTitle: "VALE",
+    assetName: "VALE3",
+    value: "77,87",
+    status: "2,42",
+    isPositivelyVaried: false,
+  },
+];
 
-const Home: React.FC = () => {
+const Home = () => {
   return (
     <Container>
       <Header />
 
-      <Content>
+      <Content showsVerticalScrollIndicator={false}>
         <Banner
           title="Ativos recomendados"
           description="Visualize as oportunidades mais alinhadas com o seu perfil."
-          cardList={Array(10).fill(asset)}
+          cardList={[...assets, ...assets]}
         />
         <Separator />
         <Banner
           title="Educação"
           description="Aprenda sobre finanças, investimentos e educação financeira de forma simples e traduzida."
-          cardList={Array(2).fill(asset)}
+          cardList={assets}
         />
       </Content>
     </Container>

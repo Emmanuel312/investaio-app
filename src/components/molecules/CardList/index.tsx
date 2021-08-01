@@ -1,6 +1,6 @@
 import React from "react";
 import { FlatList } from "react-native";
-import { Asset } from "../../../interfaces/Assets";
+import { Asset } from "../../../interfaces";
 import Card from "../../atoms/Card";
 import { Container } from "./styles";
 

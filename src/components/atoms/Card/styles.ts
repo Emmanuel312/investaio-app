@@ -1,4 +1,9 @@
 import styled from "styled-components/native";
+import { colors } from "../../../utils/colors";
+
+interface StatusProps {
+  isPositivelyVaried: boolean;
+}
 
 export const Container = styled.View`
   background: #fff;
@@ -39,9 +44,15 @@ export const BottomRight = styled.View`
 
 export const Value = styled.Text`
   color: #000;
-  font-size: 16px;
+  font-size: 14px;
 `;
 
-export const Status = styled.Text`
-  color: #38b000;
+export const StatusView = styled.View`
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const Status = styled.Text<StatusProps>`
+  color: ${(props) =>
+    props.isPositivelyVaried ? colors.variation.up : colors.variation.down};
 `;

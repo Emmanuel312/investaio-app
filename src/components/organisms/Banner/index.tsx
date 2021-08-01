@@ -1,5 +1,5 @@
 import React from "react";
-import { Asset } from "../../../interfaces/Assets";
+import { Asset } from "../../../interfaces";
 import Description from "../../atoms/Description";
 import Title from "../../atoms/Title";
 import CardList from "../../molecules/CardList";
