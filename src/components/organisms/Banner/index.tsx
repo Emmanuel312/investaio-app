@@ -4,11 +4,16 @@ import Title from "../../atoms/Title";
 import CardList from "../../molecules/CardList";
 import { Container } from "./styles";
 
-const Banner: React.FC = () => {
+interface IProps {
+  title: string;
+  description: string;
+}
+
+const Banner = ({ title, description }: IProps) => {
   return (
     <Container>
-      <Title text="Title" />
-      <Description text="Description" />
+      <Title text={title} />
+      <Description text={description} />
 
       <CardList />
     </Container>

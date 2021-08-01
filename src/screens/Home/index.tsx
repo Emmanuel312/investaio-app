@@ -9,8 +9,14 @@ const Home: React.FC = () => {
       <Header />
 
       <Content>
-        <Banner />
-        <Banner />
+        <Banner
+          title="Ativos recomendados"
+          description="Visualize as oportunidades mais alinhadas com o seu perfil."
+        />
+        <Banner
+          title="Educação"
+          description="Aprenda sobre finanças, investimentos e educação financeira de forma simples e traduzida."
+        />
       </Content>
     </Container>
   );

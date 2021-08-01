@@ -15,4 +15,5 @@ export const Content = styled.View`
   height: 80%;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
+  padding: 20px 0 0 25px;
 `;
