@@ -14,9 +14,10 @@ const CardList = ({ assetsList }: IProps) => {
       <FlatList
         data={assetsList}
         renderItem={({ item }) => <Card {...item} />}
-        horizontal
+        // horizontal
         keyExtractor={(item, index) => String(index)}
         showsHorizontalScrollIndicator={false}
+        numColumns={2}
       />
     </Container>
   );

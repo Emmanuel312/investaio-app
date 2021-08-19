@@ -36,12 +36,6 @@ const Home = () => {
           description="Visualize as oportunidades mais alinhadas com o seu perfil."
           cardList={[...assets, ...assets]}
         />
-        <Separator />
-        <Banner
-          title="Educação"
-          description="Aprenda sobre finanças, investimentos e educação financeira de forma simples e traduzida."
-          cardList={assets}
-        />
       </Content>
     </Container>
   );

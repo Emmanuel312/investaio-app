@@ -12,5 +12,5 @@ export interface Asset extends AssetCore {
 
 export interface IMetricsInfo extends AssetCore {
   description: string;
-  textInfo: string;
+  chartValues: number[];
 }

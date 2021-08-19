@@ -8,9 +8,10 @@ interface StatusProps {
 export const Container = styled.View`
   background: #fff;
   padding: 15px;
-  height: 150px;
-  width: 150px;
+  height: 165px;
+  width: 165px;
   margin-right: 10px;
+  margin-bottom: 20px;
   border-radius: 25px;
   justify-content: space-between;
 `;
