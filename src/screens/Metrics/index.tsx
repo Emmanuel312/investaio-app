@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { Fragment, useState } from "react";
 import { useEffect } from "react";
 import Section from "../../components/molecules/Section";
+import SectionChart from "../../components/molecules/SectionChart";
 import MetricsHeader from "../../components/organisms/MetricsHeader";
 import { IMetricsInfo } from "../../interfaces";
-import { wait } from "../../services/utils";
+import { toChart, wait } from "../../useCase/utils";
 import { DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
 
 import { Container, Content } from "./styles";
@@ -20,11 +21,13 @@ const metricsInfoMock: IMetricsInfo = {
 
 const Metrics = () => {
   const [metricsInfo, setMetricsInfo] = useState({} as IMetricsInfo);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchMetrics() {
       await wait(1000);
       setMetricsInfo(metricsInfoMock);
+      setLoading(false);
     }
 
     fetchMetrics();
@@ -32,14 +35,25 @@ const Metrics = () => {
 
   return (
     <Container>
-      <MetricsHeader
-        assetName={metricsInfo?.assetName}
-        brandingTitle={metricsInfo?.brandingTitle}
-        brandingPhotoUrl={metricsInfo?.brandingPhotoUrl}
-      />
-      <Content showsVerticalScrollIndicator>
-        <Section title={DESCRIPTION} sectionText={metricsInfo?.description} />
-      </Content>
+      {!loading && !!metricsInfo && (
+        <Fragment>
+          <MetricsHeader
+            assetName={metricsInfo?.assetName}
+            brandingTitle={metricsInfo?.brandingTitle}
+            brandingPhotoUrl={metricsInfo?.brandingPhotoUrl}
+          />
+          <Content showsVerticalScrollIndicator>
+            <Section
+              title={DESCRIPTION}
+              sectionText={metricsInfo?.description}
+            />
+            <SectionChart
+              title={NEED_TO_KNOW}
+              charts={toChart(metricsInfo?.chartValues)}
+            />
+          </Content>
+        </Fragment>
+      )}
     </Container>
   );
 };

@@ -14,3 +14,9 @@ export interface IMetricsInfo extends AssetCore {
   description: string;
   chartValues: number[];
 }
+
+export interface IChart {
+  name: string;
+  value: number;
+  color: string;
+}

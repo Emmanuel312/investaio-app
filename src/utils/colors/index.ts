@@ -14,3 +14,5 @@ export const colors = {
     down: "#EF0A0A",
   },
 };
+
+export const chartColors = ["#69B54E", "#BD3232", "#208EF4"];

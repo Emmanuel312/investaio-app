@@ -1,12 +1,7 @@
 import React from "react";
+import SectionTitle from "../../atoms/SectionTitle";
 
-import {
-  Container,
-  Title,
-  SectionText,
-  SectionTitleView,
-  Indicator,
-} from "./styles";
+import { Container, SectionText } from "./styles";
 
 interface IProps {
   title: string;
@@ -16,10 +11,7 @@ interface IProps {
 const Section = ({ sectionText, title }: IProps) => {
   return (
     <Container>
-      <SectionTitleView>
-        <Indicator />
-        <Title>{title}</Title>
-      </SectionTitleView>
+      <SectionTitle title={title} />
       <SectionText>{sectionText}</SectionText>
     </Container>
   );
