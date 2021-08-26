@@ -28,7 +28,7 @@ const Card = ({
   const { navigate } = useNavigation();
 
   return (
-    <TouchableOpacity onPress={() => navigate("Metrics")}>
+    <TouchableOpacity onPress={() => navigate("Metrics", { assetName })}>
       <Container>
         <Branding
           source={{

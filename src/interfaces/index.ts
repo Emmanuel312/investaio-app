@@ -1,3 +1,5 @@
+import { ParamListBase, RouteProp } from "@react-navigation/native";
+
 export interface AssetCore {
   assetName: string;
   brandingTitle: string;
@@ -19,4 +21,8 @@ export interface IChart {
   name: string;
   value: number;
   color: string;
+}
+
+export interface AssetParams extends RouteProp<ParamListBase, string> {
+  assetName: string;
 }

@@ -1,5 +1,5 @@
 import styled from "styled-components/native";
-import { getChartHeight } from "../../../useCase/utils";
+import { getChartHeight } from "../../../services/utils";
 
 interface ChartContentProps {
   color: string;

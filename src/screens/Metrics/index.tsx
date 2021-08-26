@@ -1,13 +1,15 @@
-import React, { Fragment, useState } from "react";
-import { useEffect } from "react";
+import React from "react";
 import Section from "../../components/molecules/Section";
 import SectionChart from "../../components/molecules/SectionChart";
 import MetricsHeader from "../../components/organisms/MetricsHeader";
 import { IMetricsInfo } from "../../interfaces";
-import { toChart, wait } from "../../useCase/utils";
-import { DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
+import { toChart } from "../../services/utils";
+import { BASE_URL, DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
+import useFetch from "use-http";
 
 import { Container, Content } from "./styles";
+import { useRoute } from "@react-navigation/native";
+import { MetricsScreenRouteProps } from "../../routes/types";
 
 const metricsInfoMock: IMetricsInfo = {
   brandingPhotoUrl:
@@ -20,40 +22,34 @@ const metricsInfoMock: IMetricsInfo = {
 };
 
 const Metrics = () => {
-  const [metricsInfo, setMetricsInfo] = useState({} as IMetricsInfo);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    async function fetchMetrics() {
-      await wait(1000);
-      setMetricsInfo(metricsInfoMock);
-      setLoading(false);
-    }
-
-    fetchMetrics();
-  }, []);
+  const { params } = useRoute<MetricsScreenRouteProps>();
+  const {
+    loading,
+    error,
+    data: metricsInfo2 = {} as IMetricsInfo,
+  } = useFetch<IMetricsInfo>(`${BASE_URL}/actives/${params?.assetName}`);
 
   return (
     <Container>
-      {!loading && !!metricsInfo && (
-        <Fragment>
-          <MetricsHeader
-            assetName={metricsInfo?.assetName}
-            brandingTitle={metricsInfo?.brandingTitle}
-            brandingPhotoUrl={metricsInfo?.brandingPhotoUrl}
-          />
-          <Content showsVerticalScrollIndicator>
-            <Section
-              title={DESCRIPTION}
-              sectionText={metricsInfo?.description}
-            />
-            <SectionChart
-              title={NEED_TO_KNOW}
-              charts={toChart(metricsInfo?.chartValues)}
-            />
-          </Content>
-        </Fragment>
-      )}
+      {/* {!!error && !loading && ( */}
+      {/* <> */}
+      <MetricsHeader
+        assetName={metricsInfoMock?.assetName}
+        brandingTitle={metricsInfoMock?.brandingTitle}
+        brandingPhotoUrl={metricsInfoMock?.brandingPhotoUrl}
+      />
+      <Content showsVerticalScrollIndicator>
+        <Section
+          title={DESCRIPTION}
+          sectionText={metricsInfoMock?.description}
+        />
+        <SectionChart
+          title={NEED_TO_KNOW}
+          charts={toChart(metricsInfoMock?.chartValues)}
+        />
+      </Content>
+      {/* </> */}
+      {/* )} */}
     </Container>
   );
 };

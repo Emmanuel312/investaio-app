@@ -2,8 +2,10 @@ import React from "react";
 import Banner from "../../components/organisms/Banner";
 import Header from "../../components/organisms/Header";
 import { Asset } from "../../interfaces";
+import useFetch from "use-http";
 
-import { Container, Content, Separator } from "./styles";
+import { Container, Content } from "./styles";
+import { BASE_URL } from "../../utils/constants";
 
 const assets: Asset[] = [
   {
@@ -26,8 +28,16 @@ const assets: Asset[] = [
 ];
 
 const Home = () => {
+  const {
+    loading,
+    error,
+    data: assets2 = [],
+  } = useFetch<Asset[]>(`${BASE_URL}/actives/all`);
+
   return (
     <Container>
+      {/* {!!error && !loading && ( */}
+      {/* <> */}
       <Header />
 
       <Content showsVerticalScrollIndicator={false}>
@@ -37,6 +47,8 @@ const Home = () => {
           cardList={[...assets, ...assets]}
         />
       </Content>
+      {/* </> */}
+      {/* )} */}
     </Container>
   );
 };

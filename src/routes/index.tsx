@@ -3,8 +3,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Home from "../screens/Home";
 import Metrics from "../screens/Metrics";
+import { RootStackParamList } from "./types";
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<RootStackParamList>();
 
 export const Routes = () => {
   return (
