@@ -8,7 +8,10 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.ScrollView`
-  flex: 1;
-  background: ${colors.base};
-  padding: 10px 0px;
+  flex: 0.8;
+`;
+
+export const FooterView = styled.View`
+  flex: 0.2;
+  justify-content: center;
 `;

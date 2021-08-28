@@ -1,16 +1,22 @@
 import React from "react";
 import { USERNAME, WELCOME } from "../../../utils/constants";
+import profilePerson from "../../../assets/profile-person.png";
 
-import { Container, Avatar, WelcomeText, Username, Info } from "./styles";
+import {
+  Container,
+  AvatarView,
+  Avatar,
+  WelcomeText,
+  Username,
+  Info,
+} from "./styles";
 
 const Profile = () => {
   return (
     <Container>
-      <Avatar
-        source={{
-          uri: "https://i.pinimg.com/736x/8b/16/7a/8b167af653c2399dd93b952a48740620.jpg",
-        }}
-      />
+      <AvatarView>
+        <Avatar source={profilePerson} />
+      </AvatarView>
       <Info>
         <WelcomeText>{WELCOME}</WelcomeText>
         <Username>{USERNAME}</Username>

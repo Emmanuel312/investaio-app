@@ -7,11 +7,12 @@ import { toChart } from "../../services/utils";
 import { BASE_URL, DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
 import useFetch from "use-http";
 
-import { Container, Content } from "./styles";
+import { Container, Content, FooterView } from "./styles";
 import { useRoute } from "@react-navigation/native";
 import { MetricsScreenRouteProps } from "../../routes/types";
+import AddInWalletButton from "../../components/atoms/AddInWalletButton";
 
-const metricsInfoMock: IMetricsInfo = {
+const metricsInfo: IMetricsInfo = {
   brandingPhotoUrl:
     "https://logospng.org/download/vale/logo-vale-escudo-1536.png",
   brandingTitle: "VALE",
@@ -26,30 +27,38 @@ const Metrics = () => {
   const {
     loading,
     error,
-    data: metricsInfo2 = {} as IMetricsInfo,
-  } = useFetch<IMetricsInfo>(`${BASE_URL}/actives/${params?.assetName}`);
+    data: metricsInfo = {} as IMetricsInfo,
+  } = useFetch<IMetricsInfo>(
+    `${BASE_URL}/actives/${params?.assetName}`,
+    { method: "GET" },
+    []
+  );
 
   return (
     <Container>
-      {/* {!!error && !loading && ( */}
-      {/* <> */}
-      <MetricsHeader
-        assetName={metricsInfoMock?.assetName}
-        brandingTitle={metricsInfoMock?.brandingTitle}
-        brandingPhotoUrl={metricsInfoMock?.brandingPhotoUrl}
-      />
-      <Content showsVerticalScrollIndicator>
-        <Section
-          title={DESCRIPTION}
-          sectionText={metricsInfoMock?.description}
-        />
-        <SectionChart
-          title={NEED_TO_KNOW}
-          charts={toChart(metricsInfoMock?.chartValues)}
-        />
-      </Content>
-      {/* </> */}
-      {/* )} */}
+      {!error && !loading && (
+        <>
+          <MetricsHeader
+            assetName={metricsInfo?.assetName}
+            brandingTitle={metricsInfo?.brandingTitle}
+            brandingPhotoUrl={metricsInfo?.brandingPhotoUrl}
+          />
+          <Content showsVerticalScrollIndicator>
+            <Section
+              title={DESCRIPTION}
+              sectionText={metricsInfo?.description}
+            />
+            <SectionChart
+              title={NEED_TO_KNOW}
+              charts={toChart(metricsInfo?.chartValues)}
+            />
+          </Content>
+
+          <FooterView>
+            <AddInWalletButton activeName={metricsInfo?.assetName} />
+          </FooterView>
+        </>
+      )}
     </Container>
   );
 };

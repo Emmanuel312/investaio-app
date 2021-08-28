@@ -24,8 +24,8 @@ export const Title = styled.Text`
 export const InfoView = styled.View``;
 
 export const ChartContent = styled.View<ChartContentProps>`
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   align-self: center;
   margin-top: 10px;
   background-color: ${({ color }) => color};

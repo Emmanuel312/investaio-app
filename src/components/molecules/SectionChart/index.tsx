@@ -4,7 +4,7 @@ import { IChart } from "../../../interfaces";
 import Chart from "../../atoms/Chart";
 import SectionTitle from "../../atoms/SectionTitle";
 
-import { Container } from "./styles";
+import { Container, Separator } from "./styles";
 
 interface IProps {
   title: string;
@@ -23,6 +23,8 @@ const SectionChart = ({ title, charts }: IProps) => {
         keyExtractor={(item, index) => String(index)}
         showsHorizontalScrollIndicator={false}
       />
+
+      <Separator />
     </Container>
   );
 };

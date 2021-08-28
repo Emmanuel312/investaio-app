@@ -1,7 +1,7 @@
 import React from "react";
 import { FlatList } from "react-native";
 import { Asset } from "../../../interfaces";
-import Card from "../../atoms/Card";
+import Card from "../../molecules/Card";
 import { Container } from "./styles";
 
 interface IProps {

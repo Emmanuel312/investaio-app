@@ -25,14 +25,17 @@ export const Branding = styled.Image`
 export const Bottom = styled.View`
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
 `;
 
-export const BottomLeft = styled.View``;
+export const BottomLeft = styled.View`
+  width: 50%;
+`;
 
 export const BrandingTitle = styled.Text`
   color: #000;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 `;
 
 export const AssetName = styled.Text`

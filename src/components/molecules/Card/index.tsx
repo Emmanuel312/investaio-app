@@ -16,6 +16,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { AntDesign } from "@expo/vector-icons";
 import { colors } from "../../../utils/colors";
+import { GENERIC_ASSET_IMAGE } from "../../../utils/constants";
 
 const Card = ({
   brandingPhotoUrl,
@@ -32,13 +33,15 @@ const Card = ({
       <Container>
         <Branding
           source={{
-            uri: brandingPhotoUrl,
+            uri: brandingPhotoUrl || GENERIC_ASSET_IMAGE,
           }}
         />
 
         <Bottom>
           <BottomLeft>
-            <BrandingTitle>{brandingTitle}</BrandingTitle>
+            <BrandingTitle numberOfLines={2} adjustsFontSizeToFit>
+              {brandingTitle}
+            </BrandingTitle>
             <AssetName>{assetName}</AssetName>
           </BottomLeft>
 

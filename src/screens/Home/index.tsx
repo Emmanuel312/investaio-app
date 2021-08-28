@@ -3,9 +3,12 @@ import Banner from "../../components/organisms/Banner";
 import Header from "../../components/organisms/Header";
 import { Asset } from "../../interfaces";
 import useFetch from "use-http";
+import { useFocusEffect } from "@react-navigation/native";
 
 import { Container, Content } from "./styles";
 import { BASE_URL } from "../../utils/constants";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const assets: Asset[] = [
   {
@@ -28,27 +31,41 @@ const assets: Asset[] = [
 ];
 
 const Home = () => {
-  const {
-    loading,
-    error,
-    data: assets2 = [],
-  } = useFetch<Asset[]>(`${BASE_URL}/actives/all`);
+  const [assets, setAssets] = useState<Asset[]>([]);
+  const { get, response, loading, error } = useFetch(`${BASE_URL}/actives/all`);
+
+  useEffect(() => {
+    getAllAssets();
+  }, []);
+
+  useFocusEffect(
+    React.useCallback(() => {
+      getAllAssets();
+    }, [])
+  );
+
+  async function getAllAssets() {
+    try {
+      const assetsResponse: Asset[] = await get();
+      if (response.ok) setAssets(assetsResponse);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <Container>
-      {/* {!!error && !loading && ( */}
-      {/* <> */}
       <Header />
 
       <Content showsVerticalScrollIndicator={false}>
-        <Banner
-          title="Ativos recomendados"
-          description="Visualize as oportunidades mais alinhadas com o seu perfil."
-          cardList={[...assets, ...assets]}
-        />
+        {!error && !loading && (
+          <Banner
+            title="Ativos recomendados"
+            description="Visualize as oportunidades mais alinhadas com o seu perfil."
+            cardList={assets}
+          />
+        )}
       </Content>
-      {/* </> */}
-      {/* )} */}
     </Container>
   );
 };

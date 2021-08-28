@@ -5,11 +5,16 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Avatar = styled.Image`
-  height: 60px;
-  width: 60px;
-  border-radius: 30px;
+export const AvatarView = styled.View`
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  background-color: #fff;
+  align-items: center;
+  justify-content: center;
 `;
+
+export const Avatar = styled.Image``;
 
 export const Info = styled.View`
   padding: 10px 20px;

@@ -3,19 +3,22 @@ import styled from "styled-components/native";
 export const Container = styled.View`
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 `;
 
 export const GoBack = styled.TouchableOpacity``;
 
-export const Back = styled.View``;
-
-export const BrandingView = styled.View``;
+export const BrandingView = styled.View`
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+`;
 
 export const BrandingTitle = styled.Text`
   color: #fff;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: bold;
+  text-align: center;
 `;
 
 export const AssetName = styled.Text`
@@ -26,13 +29,14 @@ export const AssetName = styled.Text`
 export const AvatarView = styled.View`
   flex-direction: row;
   align-items: center;
+  margin-right: 10px;
 `;
 
 export const Avatar = styled.Image`
-  height: 50px;
-  width: 50px;
-  border-radius: 25px;
-  margin-right: -10px;
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+  margin-right: -15px;
 `;
 
 export const AvatarAmount = styled.Text`
@@ -42,7 +46,7 @@ export const AvatarAmount = styled.Text`
 `;
 
 export const Branding = styled.Image`
-  height: 50px;
-  width: 50px;
-  border-radius: 5px;
+  height: 40px;
+  width: 40px;
+  border-radius: 4px;
 `;
