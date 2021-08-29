@@ -51,8 +51,8 @@ const MetricsHeader = ({
         <AssetName>{assetName}</AssetName>
       </BrandingView>
       <AvatarView>
-        {metricsPerson.map((metricPerson) => (
-          <Avatar source={metricPerson} />
+        {metricsPerson.map((metricPerson, index) => (
+          <Avatar key={index} source={metricPerson} />
         ))}
 
         <AvatarAmount>{AVATAR_AMOUNT}</AvatarAmount>

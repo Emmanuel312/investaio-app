@@ -44,6 +44,8 @@ const Home = () => {
     }, [])
   );
 
+  console.log(loading, error);
+
   async function getAllAssets() {
     try {
       const assetsResponse: Asset[] = await get();
@@ -57,14 +59,12 @@ const Home = () => {
     <Container>
       <Header />
 
-      <Content showsVerticalScrollIndicator={false}>
-        {!error && !loading && (
-          <Banner
-            title="Ativos recomendados"
-            description="Visualize as oportunidades mais alinhadas com o seu perfil."
-            cardList={assets}
-          />
-        )}
+      <Content>
+        <Banner
+          title="Ativos recomendados"
+          description="Visualize as oportunidades mais alinhadas com o seu perfil."
+          cardList={assets}
+        />
       </Content>
     </Container>
   );

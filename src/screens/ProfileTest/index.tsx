@@ -1,11 +1,11 @@
 import React from "react";
-import useFetch from "use-http";
 
 import { Container, QuestionCardListView, SkipView, SkipText } from "./styles";
-import { BASE_URL } from "../../utils/constants";
-import QuestionCard from "../../components/molecules/QuestionCard";
+
 import { AssetCore } from "../../interfaces";
 import QuestionCardList from "../../components/organisms/QuestionCardList";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const assetsTest: AssetCore[] = [
   {
@@ -22,13 +22,19 @@ const assetsTest: AssetCore[] = [
 ];
 
 const ProfileTest = () => {
+  const [skip, setSkip] = useState(false);
+
   return (
     <Container>
       <QuestionCardListView>
-        <QuestionCardList assetsList={assetsTest} />
+        <QuestionCardList
+          assetsList={assetsTest}
+          skip={skip}
+          setSkip={setSkip}
+        />
       </QuestionCardListView>
 
-      <SkipView>
+      <SkipView onPress={() => setSkip(true)}>
         <SkipText>Pular essa, e me mostre uma pergunta diferente</SkipText>
       </SkipView>
     </Container>

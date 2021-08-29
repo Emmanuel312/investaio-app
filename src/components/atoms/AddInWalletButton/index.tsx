@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import { ActivityIndicator } from "react-native";
 import useFetch from "use-http";
 import { BASE_URL } from "../../../utils/constants";
 
@@ -30,7 +31,11 @@ const AddInWalletButton = ({ activeName }: Props) => {
 
   return (
     <Container onPress={handleAddToWallet} disabled={disable}>
-      <AddToWalletText>{handleTextInfo()}</AddToWalletText>
+      {loading ? (
+        <ActivityIndicator color="##000" />
+      ) : (
+        <AddToWalletText>{handleTextInfo()}</AddToWalletText>
+      )}
     </Container>
   );
 };

@@ -4,7 +4,6 @@ import { colors } from "../../utils/colors";
 export const Container = styled.View`
   background: #e5e5e5;
   flex: 1;
-  align-items: center;
 `;
 
 export const QuestionCardListView = styled.View`
@@ -12,7 +11,8 @@ export const QuestionCardListView = styled.View`
   justify-content: flex-end;
 `;
 
-export const SkipView = styled.View`
+export const SkipView = styled.TouchableOpacity`
+  align-items: center;
   justify-content: center;
   flex: 0.2;
 `;
