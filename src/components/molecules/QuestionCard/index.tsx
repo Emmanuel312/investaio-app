@@ -1,6 +1,6 @@
 import React from "react";
 import { TouchableOpacity } from "react-native";
-import { Asset, AssetCore } from "../../../interfaces";
+import { Asset, AssetCore, QuestionAsset } from "../../../interfaces";
 import {
   Container,
   Header,
@@ -10,7 +10,11 @@ import {
   ContentText,
 } from "./styles";
 
-const QuestionCard = ({ assetName, brandingPhotoUrl }: AssetCore) => {
+const QuestionCard = ({
+  assetName,
+  brandingPhotoUrl,
+  description,
+}: QuestionAsset) => {
   return (
     <Container>
       <Header>
@@ -18,14 +22,7 @@ const QuestionCard = ({ assetName, brandingPhotoUrl }: AssetCore) => {
         <BrandingTitle>{assetName}</BrandingTitle>
       </Header>
       <ContentView>
-        <ContentText>
-          A volatilidade do ativo é alta, e isso indica o nível de risco dela.
-        </ContentText>
-
-        <ContentText>
-          A ação está forte no momento, isto é, com bons retornos, e tem um
-          histórico também bom.
-        </ContentText>
+        <ContentText>{description}</ContentText>
       </ContentView>
     </Container>
   );

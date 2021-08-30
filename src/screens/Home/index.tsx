@@ -9,6 +9,7 @@ import { Container, Content } from "./styles";
 import { BASE_URL } from "../../utils/constants";
 import { useState } from "react";
 import { useEffect } from "react";
+import { api } from "../../services/api/axios";
 
 const assets: Asset[] = [
   {
@@ -32,24 +33,22 @@ const assets: Asset[] = [
 
 const Home = () => {
   const [assets, setAssets] = useState<Asset[]>([]);
-  const { get, response, loading, error } = useFetch(`${BASE_URL}/actives/all`);
 
-  useEffect(() => {
-    getAllAssets();
-  }, []);
+  // useEffect(() => {
+  //   getAllAssets();
+  // }, []);
 
   useFocusEffect(
     React.useCallback(() => {
+      console.log("focus");
       getAllAssets();
     }, [])
   );
 
-  console.log(loading, error);
-
   async function getAllAssets() {
     try {
-      const assetsResponse: Asset[] = await get();
-      if (response.ok) setAssets(assetsResponse);
+      const response = await api.get<Asset[]>("/actives/all");
+      setAssets(response.data);
     } catch (error) {
       console.log(error);
     }

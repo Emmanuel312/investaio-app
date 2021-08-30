@@ -23,6 +23,10 @@ export interface IChart {
   color: string;
 }
 
+export interface QuestionAsset extends AssetCore {
+  description: string;
+}
+
 export interface AssetParams extends RouteProp<ParamListBase, string> {
   assetName: string;
 }

@@ -11,6 +11,10 @@ import { Container, Content, FooterView } from "./styles";
 import { useRoute } from "@react-navigation/native";
 import { MetricsScreenRouteProps } from "../../routes/types";
 import AddInWalletButton from "../../components/atoms/AddInWalletButton";
+import { useEffect } from "react";
+import { api } from "../../services/api/axios";
+import { useState } from "react";
+import { ActivityIndicator } from "react-native";
 
 const metricsInfo: IMetricsInfo = {
   brandingPhotoUrl:
@@ -24,19 +28,32 @@ const metricsInfo: IMetricsInfo = {
 
 const Metrics = () => {
   const { params } = useRoute<MetricsScreenRouteProps>();
-  const {
-    loading,
-    error,
-    data: metricsInfo = {} as IMetricsInfo,
-  } = useFetch<IMetricsInfo>(
-    `${BASE_URL}/actives/${params?.assetName}`,
-    { method: "GET" },
-    []
+  const [metricsInfo, setMetricsInfo] = useState<IMetricsInfo>(
+    {} as IMetricsInfo
   );
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchMetrics();
+  }, []);
+
+  async function fetchMetrics() {
+    try {
+      const response = await api.get(`actives/${params?.assetName}`);
+      setMetricsInfo(response.data);
+      setLoading(false);
+      console.log(response.data);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
+  }
 
   return (
     <Container>
-      {!error && !loading && (
+      {loading ? (
+        <ActivityIndicator color="#fca311" />
+      ) : (
         <>
           <MetricsHeader
             assetName={metricsInfo?.assetName}
@@ -48,10 +65,10 @@ const Metrics = () => {
               title={DESCRIPTION}
               sectionText={metricsInfo?.description}
             />
-            <SectionChart
+            {/* <SectionChart
               title={NEED_TO_KNOW}
               charts={toChart(metricsInfo?.chartValues)}
-            />
+            /> */}
           </Content>
 
           <FooterView>

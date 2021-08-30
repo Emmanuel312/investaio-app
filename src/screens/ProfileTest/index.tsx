@@ -2,22 +2,32 @@ import React from "react";
 
 import { Container, QuestionCardListView, SkipView, SkipText } from "./styles";
 
-import { AssetCore } from "../../interfaces";
+import { AssetCore, QuestionAsset } from "../../interfaces";
 import QuestionCardList from "../../components/organisms/QuestionCardList";
 import { useState } from "react";
-import { useEffect } from "react";
 
-const assetsTest: AssetCore[] = [
+const assetsTest: QuestionAsset[] = [
   {
     brandingPhotoUrl: "https://logospng.org/wp-content/uploads/banco-inter.png",
     brandingTitle: "INTER",
     assetName: "BIDI11",
+    description:
+      "A ação do Banco Inter apresentou um retorno alto no último ano, com baixa volatilidade. Isso significa que quem comprou, tomou pouco risco e teve bons retornos. É indicada para perfis mais conservadores.",
+  },
+  {
+    brandingPhotoUrl: "https://i.imgur.com/JePkiGG.png",
+    brandingTitle: "BRF",
+    assetName: "BRFS3",
+    description:
+      "A ação da BRF apresenta retornos dentro do padrão nos últimos anos, porém há uma volatilidade muito grande. Isso significa que é uma ação mais indicada para perfis moderados.",
   },
   {
     brandingPhotoUrl:
       "https://logospng.org/download/vale/logo-vale-escudo-1536.png",
     brandingTitle: "VALE",
     assetName: "VALE3",
+    description:
+      "A ação da Vale apresenta bons retornos nos últimos anos, porém há uma volatilidade muito grande. Isso significa que é uma ação mais indicada para perfis arriscados.",
   },
 ];
 

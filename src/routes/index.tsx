@@ -12,7 +12,7 @@ export const Routes = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        {/* <Stack.Screen name="ProfileTest" component={ProfileTest} /> */}
+        <Stack.Screen name="ProfileTest" component={ProfileTest} />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="Metrics" component={Metrics} />
       </Stack.Navigator>
