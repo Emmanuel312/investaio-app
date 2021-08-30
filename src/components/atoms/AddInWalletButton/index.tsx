@@ -14,8 +14,6 @@ const AddInWalletButton = ({ activeName }: Props) => {
   const { post, response, loading, error } = useFetch(`${BASE_URL}/actives`);
   const [disable, setDisable] = useState(false);
 
-  console.log(loading, error, disable);
-
   async function handleAddToWallet() {
     try {
       await post("/", { active_name: activeName });

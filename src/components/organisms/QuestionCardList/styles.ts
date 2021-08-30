@@ -4,13 +4,13 @@ export const Container = styled.View`
   flex: 1;
   width: 100%;
   flex-direction: row;
-  align-items: flex-end;
   justify-content: center;
+  align-items: center;
 `;
 
 export const RejectButton = styled.TouchableOpacity`
   position: absolute;
-  top: 60%;
+  top: 40%;
   left: -60px;
   background-color: ${lighten(0.2, "#fca311")};
   opacity: 0.8;
@@ -24,7 +24,7 @@ export const RejectButton = styled.TouchableOpacity`
 
 export const CheckButton = styled.TouchableOpacity`
   position: absolute;
-  top: 60%;
+  top: 40%;
   right: -60px;
   background-color: ${lighten(0.2, "#fca311")};
   height: 120px;

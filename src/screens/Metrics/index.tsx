@@ -42,7 +42,6 @@ const Metrics = () => {
       const response = await api.get(`actives/${params?.assetName}`);
       setMetricsInfo(response.data);
       setLoading(false);
-      console.log(response.data);
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -65,10 +64,10 @@ const Metrics = () => {
               title={DESCRIPTION}
               sectionText={metricsInfo?.description}
             />
-            {/* <SectionChart
+            <SectionChart
               title={NEED_TO_KNOW}
               charts={toChart(metricsInfo?.chartValues)}
-            /> */}
+            />
           </Content>
 
           <FooterView>

@@ -19,8 +19,6 @@ const QuestionCardList = ({ assetsList, skip, setSkip }: IProps) => {
   const [assets, setAssets] = useState(assetsList);
   const { navigate } = useNavigation();
 
-  console.log(assets.length, currentIndex);
-
   useEffect(() => {
     if (skip) {
       setSafeCurrentIndex();

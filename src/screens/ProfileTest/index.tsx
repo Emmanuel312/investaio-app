@@ -1,8 +1,14 @@
 import React from "react";
-
-import { Container, QuestionCardListView, SkipView, SkipText } from "./styles";
-
-import { AssetCore, QuestionAsset } from "../../interfaces";
+import {
+  Container,
+  Header,
+  Title,
+  QuestionText,
+  QuestionCardListView,
+  SkipView,
+  SkipText,
+} from "./styles";
+import { QuestionAsset } from "../../interfaces";
 import QuestionCardList from "../../components/organisms/QuestionCardList";
 import { useState } from "react";
 
@@ -36,6 +42,10 @@ const ProfileTest = () => {
 
   return (
     <Container>
+      <Header>
+        <Title>Teste de Personalidade</Title>
+        <QuestionText>Você escolheria esse ativo?</QuestionText>
+      </Header>
       <QuestionCardListView>
         <QuestionCardList
           assetsList={assetsTest}
@@ -45,7 +55,7 @@ const ProfileTest = () => {
       </QuestionCardListView>
 
       <SkipView onPress={() => setSkip(true)}>
-        <SkipText>Pular essa, e me mostre uma pergunta diferente</SkipText>
+        <SkipText>Pular essa e me mostre uma pergunta diferente</SkipText>
       </SkipView>
     </Container>
   );

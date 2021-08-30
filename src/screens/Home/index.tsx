@@ -2,14 +2,11 @@ import React from "react";
 import Banner from "../../components/organisms/Banner";
 import Header from "../../components/organisms/Header";
 import { Asset } from "../../interfaces";
-import useFetch from "use-http";
 import { useFocusEffect } from "@react-navigation/native";
-
 import { Container, Content } from "./styles";
-import { BASE_URL } from "../../utils/constants";
 import { useState } from "react";
-import { useEffect } from "react";
 import { api } from "../../services/api/axios";
+import { ActivityIndicator } from "react-native";
 
 const assets: Asset[] = [
   {
@@ -33,7 +30,7 @@ const assets: Asset[] = [
 
 const Home = () => {
   const [assets, setAssets] = useState<Asset[]>([]);
-
+  const [loading, setLoading] = useState(true);
   // useEffect(() => {
   //   getAllAssets();
   // }, []);
@@ -41,6 +38,7 @@ const Home = () => {
   useFocusEffect(
     React.useCallback(() => {
       console.log("focus");
+      setLoading(true);
       getAllAssets();
     }, [])
   );
@@ -49,7 +47,9 @@ const Home = () => {
     try {
       const response = await api.get<Asset[]>("/actives/all");
       setAssets(response.data);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }
@@ -57,13 +57,16 @@ const Home = () => {
   return (
     <Container>
       <Header />
-
       <Content>
-        <Banner
-          title="Ativos recomendados"
-          description="Visualize as oportunidades mais alinhadas com o seu perfil."
-          cardList={assets}
-        />
+        {loading ? (
+          <ActivityIndicator color="#fca311" />
+        ) : (
+          <Banner
+            title="Ativos recomendados"
+            description="Visualize as oportunidades mais alinhadas com o seu perfil."
+            cardList={assets}
+          />
+        )}
       </Content>
     </Container>
   );
