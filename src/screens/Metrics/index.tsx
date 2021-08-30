@@ -4,8 +4,7 @@ import SectionChart from "../../components/molecules/SectionChart";
 import MetricsHeader from "../../components/organisms/MetricsHeader";
 import { IMetricsInfo } from "../../interfaces";
 import { toChart } from "../../services/utils";
-import { BASE_URL, DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
-import useFetch from "use-http";
+import { DESCRIPTION, NEED_TO_KNOW } from "../../utils/constants";
 
 import { Container, Content, FooterView } from "./styles";
 import { useRoute } from "@react-navigation/native";

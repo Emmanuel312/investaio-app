@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
 import { ActivityIndicator } from "react-native";
-import useFetch from "use-http";
-import { BASE_URL } from "../../../utils/constants";
+import { Asset } from "../../../interfaces";
+import { api } from "../../../services/api/axios";
+import { useStore } from "../../../services/store";
 
 import { Container, AddToWalletText } from "./styles";
 
@@ -11,14 +12,22 @@ interface Props {
 }
 
 const AddInWalletButton = ({ activeName }: Props) => {
-  const { post, response, loading, error } = useFetch(`${BASE_URL}/actives`);
+  const { setAssets } = useStore();
+  const [loading, setLoading] = useState(false);
   const [disable, setDisable] = useState(false);
 
   async function handleAddToWallet() {
     try {
-      await post("/", { active_name: activeName });
-      if (response.ok) setDisable(true);
+      setLoading(true);
+      const response = await api.post<Asset[]>("actives", {
+        active_name: activeName,
+      });
+
+      setAssets(response.data);
+      setDisable(true);
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   }

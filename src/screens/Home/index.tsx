@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Banner from "../../components/organisms/Banner";
 import Header from "../../components/organisms/Header";
 import { Asset } from "../../interfaces";
@@ -7,6 +7,7 @@ import { Container, Content } from "./styles";
 import { useState } from "react";
 import { api } from "../../services/api/axios";
 import { ActivityIndicator } from "react-native";
+import { useStore } from "../../services/store";
 
 const assets: Asset[] = [
   {
@@ -29,19 +30,12 @@ const assets: Asset[] = [
 ];
 
 const Home = () => {
-  const [assets, setAssets] = useState<Asset[]>([]);
+  const { assets, setAssets } = useStore();
   const [loading, setLoading] = useState(true);
-  // useEffect(() => {
-  //   getAllAssets();
-  // }, []);
 
-  useFocusEffect(
-    React.useCallback(() => {
-      console.log("focus");
-      setLoading(true);
-      getAllAssets();
-    }, [])
-  );
+  useEffect(() => {
+    getAllAssets();
+  }, []);
 
   async function getAllAssets() {
     try {
